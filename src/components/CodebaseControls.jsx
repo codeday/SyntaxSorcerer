@@ -7,11 +7,11 @@ export default function CodebaseControls() {
         const codebaseURLInput = useRef(null);
     
         const response = await fetch(`${process.env.URL}/api/download`, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ "url": codebaseURLInput.current.value }),
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ "url": codebaseURLInput.current.value }),
         });
     
         const result = await response.json();
@@ -19,6 +19,20 @@ export default function CodebaseControls() {
             alert(result.error);
         } else {
             alert("Codebase downloaded and cached");
+        }
+    }
+
+    // Delete the existing codebase
+    async function deleteCodebase() {
+        const response = await fetch(`${apiURL}/api/delete`, {
+            method: "GET"
+        });
+    
+        const result = await response.json();
+        if (result.error) {
+            alert(result.error);
+        } else {
+            alert("Codebase successfully deleted");
         }
     }
 
