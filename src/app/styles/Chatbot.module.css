@@ -1,0 +1,214 @@
+/* Container styles */
+.container {
+    padding: 50px;
+    padding-bottom: 70px;
+    margin-top: 350px;
+    margin-bottom: 60px;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    width: 65vw;
+    height: 100%;
+    text-align: center;
+    background: #777ed4; /* Fallback for old browsers */
+    background: -webkit-linear-gradient(
+        to bottom,
+        #6b90e0,
+        #8d77d4
+    ); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(
+        to bottom,
+        #6b90e0,
+        #8d77d4
+    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    opacity: 0.95;
+    overflow-y: auto;
+}
+
+@media only screen and (max-width: 600px) {
+    .container {
+        width: 75vw;
+        padding: 30px;
+        margin-top: 250px;
+    }
+}
+
+/* Chatbox styles */
+.chatbox {
+    border-radius: 10px;
+    padding: 25px;
+    margin-bottom: 10px;
+    height: 50vh;
+    overflow-x: wrap;
+    overflow-y: auto;
+    background: #473b8b;
+    opacity: 0.5;
+}
+
+/* Heading styles */
+.title {
+    color: white;
+    font-size: 400%;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    line-height: 110%;
+}
+
+@media only screen and (max-width: 600px) {
+    .title {
+        font-size: 300%;
+    }
+}
+
+/* Messages list styles */
+.messages {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    color: white;
+    overflow-x: wrap;
+}
+
+/* Message item styles */
+.message {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 10px;
+}
+
+.message .sender {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.message .content {
+    word-wrap: break-word;
+    text-align: left;
+}
+
+/* User input styles */
+.userInput {
+    font-family: "Poppins", sans-serif;
+    width: calc(100% - 22px);
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    border-style: none;
+    overflow-y: auto;
+    background: #473b8b;
+    color: white;
+    opacity: 0.5;
+}
+
+/* Button styles */
+.button {
+    font-family: "Poppins", sans-serif;
+    font-weight: bold;
+    font-size: large;
+    padding: 10px 20px;
+    border: none;
+    background: #4f55a8;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-left: 10px;
+    margin-bottom: 20px;
+}
+
+.button:disabled {
+    background-color: #8386a8;
+    cursor: not-allowed;
+}
+
+.button:disabled:hover {
+    background-color: #8386a8; /* Hover color for disabled state */
+}
+
+.button:not(:disabled):hover {
+    background-color: #62aced; /* Hover color for enabled state */
+}
+
+/* Flexbox styles */
+.flex {
+    display: flex;
+}
+
+.submitButtons {
+    display: flex;
+}
+
+@media only screen and (max-width: 406px) {
+    .button {
+        margin-bottom: 10px;
+    }
+}
+
+/* Input styles */
+.input {
+    font-family: "Poppins", sans-serif;
+    border-style: none;
+    width: calc(100% - 22px);
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    background: #473b8b;
+    color: white;
+    opacity: 0.5;
+}
+
+/* Placeholder styles */
+.input::placeholder {
+    opacity: 0.8;
+    color: #eae4fe;
+}
+
+/* Light animation for title */
+@keyframes lights {
+    0% {
+        color: hsl(230, 46%, 85%);
+        text-shadow:
+            0 0 1em hsla(320, 100%, 50%, 0.2),
+            0 0 0.125em hsla(320, 100%, 60%, 0.3),
+            -1em -0.125em 0.5em hsla(40, 100%, 60%, 0),
+            1em 0.125em 0.5em hsla(200, 100%, 60%, 0);
+    }
+
+    30% {
+        color: hsl(231, 100%, 92%);
+        text-shadow:
+            0 0 1em hsla(320, 100%, 50%, 0.7),
+            0 0 0.125em hsla(320, 100%, 60%, 0.7),
+            -0.5em -0.125em 0.25em hsla(40, 100%, 60%, 0.2),
+            0.5em 0.125em 0.25em hsla(200, 100%, 60%, 0.4);
+    }
+
+    40% {
+        color: hsl(0, 0%, 100%);
+        text-shadow:
+            0 0 1em hsla(283, 100%, 50%, 0.7),
+            0 0 0.125em hsla(320, 100%, 90%, 0.7),
+            -0.25em -0.125em 0.125em hsla(40, 100%, 60%, 0.2),
+            0.25em 0.125em 0.125em hsla(200, 100%, 60%, 0.4);
+    }
+
+    70% {
+        color: hsl(227, 70%, 94%);
+        text-shadow:
+            0 0 1em hsla(297, 100%, 50%, 0.7),
+            0 0 0.125em hsla(214, 100%, 85%, 0.88),
+            0.5em -0.125em 0.25em hsla(40, 100%, 60%, 0.2),
+            -0.5em 0.125em 0.25em hsla(200, 100%, 60%, 0.4);
+    }
+
+    100% {
+        color: hsl(232, 49%, 85%);
+        text-shadow:
+            0 0 1em hsla(320, 100%, 50%, 0.2),
+            0 0 0.125em hsla(320, 100%, 60%, 0.3),
+            1em -0.125em 0.5em hsla(40, 100%, 60%, 0),
+            -1em 0.125em 0.5em hsla(200, 100%, 60%, 0);
+    }
+}
+
+.title {
+    animation: lights 2s 750ms linear infinite;
+}
