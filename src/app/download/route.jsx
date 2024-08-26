@@ -3,36 +3,37 @@ import path from 'path';
 import fs from 'fs';
 import axios from 'axios';
 import AdmZip from 'adm-zip';
+// add import for pinecone stuff
 
 export async function POST(request) {
-    return request.json().then(async (data) => {
-        // Print an error message if the codebase already exists
-        const { url } = data;
+    return request.json()
+        .then((data) => {
+            const { url } = data;
 
-        const codebasePath = path.join(
-            path.resolve(__dirname, "../../"),
-            `codebases`
-        );
+            const codebasePath = path.join(
+                path.resolve(__dirname, "../../"),
+                'codebases'
+            );
 
-        if (fs.existsSync(codebasePath)) {
-            return NextResponse.json({ error: "Codebase already cached; please delete it if you want to upload a new one" }, { status: 400 });
-        }
+            if (fs.existsSync(codebasePath)) {
+                return Promise.reject({ error: "Codebase already cached; please delete it if you want to upload a new one", status: 400 });
+            }
 
-        if (!url || url === "") {
-            return NextResponse.json({ error: "URL is required" }, { status: 400 });
-        }
+            if (!url || url === "") {
+                return Promise.reject({ error: "URL is required", status: 400 });
+            }
 
-        try {
-            const response = await axios({
+            return axios({
                 url,
                 method: "GET",
                 responseType: "arraybuffer",
             });
-
+        })
+        .then((response) => {
             const zip = new AdmZip(response.data);
             const extractPath = path.join(
-                path.resolve(__dirname, "../../"),  // Navigate to the root directory and add the codebases directory
-                `codebases`,
+                path.resolve(__dirname, "../../"),
+                'codebases',
                 path.basename(url, ".zip")
             );
             zip.extractAllTo(extractPath, true);
@@ -65,12 +66,13 @@ export async function POST(request) {
                 message: "Codebase downloaded and extracted",
                 path: extractPath,
             });
-        } catch (error) {
+        })
+        .catch((error) => {
             console.error("Error downloading codebase:", error);
-            return NextResponse.json({ error: "Failed to download codebase" }, { status: 500 });
-        }
-    }).catch((error) => {
-        console.error("Error parsing request JSON:", error);
-        return NextResponse.json({ error: "Invalid JSON data" }, { status: 400 });
-    });
+
+            const errorMessage = error.error || "Failed to download codebase";
+            const status = error.status || 500;
+
+            return NextResponse.json({ error: errorMessage }, { status });
+        });
 }
