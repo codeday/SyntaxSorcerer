@@ -3,9 +3,10 @@ import { useRef } from "react";
 
 export default function CodebaseControls() {
   const codebaseURLInput = useRef(null);
+
   // Download a codebase
   async function downloadCodebase() {
-    const response = await fetch(`${process.env.URL}/api/download`, {
+    const response = await fetch(`${process.env.URL}/download`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -20,6 +21,23 @@ export default function CodebaseControls() {
       alert("Codebase downloaded and cached");
     }
   }
+
+  // Delete the codebase
+  async function deleteCodebase() {
+    const response = await fetch(`${process.env.URL}/delete`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+  
+    const result = await response.json();
+    if (result.error) {
+      alert(result.error);
+    } else {
+      alert("Codebase successfully deleted");
+    }
+  }  
 
   return (
     <div className="flex">

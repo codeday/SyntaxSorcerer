@@ -5,7 +5,7 @@ import path from 'path';
 import pinecone from '../config/pineconeConfig/pineconeInit.js';
 import seed from '../config/seedConfig.js';
 
-export async function GET(request) {
+export async function DELETE(request) {
     return request.json()
         .then(async () => {
             const codebasePath = path.join(
