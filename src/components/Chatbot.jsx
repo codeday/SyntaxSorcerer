@@ -7,7 +7,13 @@ import {
 } from "../interface";
 import styles from "../styles/Chatbot.module.css"; // Updated import for CSS Modules
 
-function Chatbot() {
+export default function Chatbot() {
+  
+  async function sendMessage() {
+    const userInput = document.getElementById("user-input").value;
+    if(userInput.trim() === "") return;
+  }
+  
   return (
     <div>
       <div className={styles.container}>
@@ -63,4 +69,3 @@ function Chatbot() {
   );
 }
 
-export default Chatbot;
