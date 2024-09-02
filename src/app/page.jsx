@@ -1,6 +1,10 @@
 import Image from "next/image";
 import styles from "./page.module.css";
 import CodebaseControls from "../components/CodebaseControls";
+import {
+  sendMessage,
+  sendCodebaseQuery,
+} from "../components/Chatbot";
 
 export default function Home() {
   return (

@@ -1,11 +1,4 @@
-// src/app/components/Chatbot.js
-import {
-  sendMessage,
-  downloadCodebase,
-  deleteCodebase,
-  sendCodebaseQuery,
-} from "../interface";
-import styles from "../styles/Chatbot.module.css"; // Updated import for CSS Modules
+import styles from "../app/styles/Chatbot.module.css"; // Updated import for CSS Modules
 
 export default function Chatbot() {
   
