@@ -1,12 +1,13 @@
 "use client";
 import { useRef } from "react";
+import styles from "../app/styles/Chatbot.module.css";
 
 export default function CodebaseControls() {
   const codebaseURLInput = useRef(null);
 
   // Download a codebase
   async function downloadCodebase() {
-    const response = await fetch(`${process.env.URL}/download`, {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_URL}/download`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -24,8 +25,8 @@ export default function CodebaseControls() {
 
   // Delete the codebase
   async function deleteCodebase() {
-    const response = await fetch(`${process.env.URL}/delete`, {
-      method: "DELETE",
+    const response = await fetch(`${process.env.NEXT_PUBLIC_URL}/delete`, {
+      method: "GET",
       headers: {
         "Content-Type": "application/json",
       },
@@ -40,17 +41,26 @@ export default function CodebaseControls() {
   }  
   
   return (
-    <div className="flex">
+    <div className={styles.flex}>
       <input
         type="text"
-        ref={codebaseURLInput}
         id="codebase-url"
+        className={styles.input}
         placeholder="Enter codebase URL (must be a link to download a .zip file)"
-      ></input>
-      <button id="download-button" onClick={downloadCodebase}>
+        ref={codebaseURLInput}
+      />
+      <button
+        id="download-button"
+        className={styles.codebaseButton}
+        onClick={downloadCodebase}
+      >
         Download
       </button>
-      <button id="delete-button" onClick={deleteCodebase}>
+      <button
+        id="delete-button"
+        className={styles.codebaseButton}
+        onClick={deleteCodebase}
+      >
         Remove
       </button>
     </div>

@@ -1,14 +1,21 @@
+/* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* Title styles */
+.title {
+    font-family: "Poppins", sans-serif;
+    text-align: center;
+}
 /* Container styles */
 .container {
     padding: 50px;
     padding-bottom: 70px;
-    margin-top: 350px;
+    margin-top: 400px;
     margin-bottom: 60px;
-    border-radius: 20px;
+    border-radius: 30px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     width: 65vw;
-    height: 100%;
-    text-align: center;
+    height: auto;
     background: #777ed4; /* Fallback for old browsers */
     background: -webkit-linear-gradient(
         to bottom,
@@ -38,10 +45,9 @@
     padding: 25px;
     margin-bottom: 10px;
     height: 50vh;
-    overflow-x: wrap;
     overflow-y: auto;
     background: #473b8b;
-    opacity: 0.5;
+    opacity: 0.6;
 }
 
 /* Heading styles */
@@ -60,11 +66,11 @@
 
 /* Messages list styles */
 .messages {
+    font-family: "Poppins", sans-serif;
     list-style: none;
     padding: 0;
     margin: 0;
-    color: white;
-    overflow-x: wrap;
+    color:white;
 }
 
 /* Message item styles */
@@ -75,11 +81,13 @@
 }
 
 .message .sender {
+    display: flex;
     font-weight: bold;
     margin-right: 10px;
 }
 
 .message .content {
+    display: flex;
     word-wrap: break-word;
     text-align: left;
 }
@@ -95,11 +103,11 @@
     overflow-y: auto;
     background: #473b8b;
     color: white;
-    opacity: 0.5;
+    opacity: 0.6;
 }
 
 /* Button styles */
-.button {
+.submitButton {
     font-family: "Poppins", sans-serif;
     font-weight: bold;
     font-size: large;
@@ -114,16 +122,35 @@
     margin-bottom: 20px;
 }
 
-.button:disabled {
+.codebaseButton {
+    font-family: "Poppins", sans-serif;
+    font-weight: bold;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-size: medium;
+    border-style: none;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    border-radius: 4px;
+    background: #4f55a8;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.submitButton:disabled, .codebaseButton:disabled {
     background-color: #8386a8;
     cursor: not-allowed;
 }
 
-.button:disabled:hover {
+.submitButton:disabled:hover, .codebaseButton:disabled:hover {
     background-color: #8386a8; /* Hover color for disabled state */
 }
 
-.button:not(:disabled):hover {
+.submitButton:not(:disabled):hover, .codebaseButton:not(:disabled):hover {
     background-color: #62aced; /* Hover color for enabled state */
 }
 
@@ -132,12 +159,13 @@
     display: flex;
 }
 
-.submitButtons {
+.submitFlex {
     display: flex;
+    justify-content: center; 
 }
 
 @media only screen and (max-width: 406px) {
-    .button {
+    .query-button, .codebase-button {
         margin-bottom: 10px;
     }
 }
@@ -152,11 +180,16 @@
     margin-bottom: 10px;
     background: #473b8b;
     color: white;
-    opacity: 0.5;
+    opacity: 0.6;
 }
 
 /* Placeholder styles */
 .input::placeholder {
+    opacity: 0.8;
+    color: #eae4fe;
+}
+
+.userInput::placeholder {
     opacity: 0.8;
     color: #eae4fe;
 }
@@ -212,3 +245,4 @@
 .title {
     animation: lights 2s 750ms linear infinite;
 }
+

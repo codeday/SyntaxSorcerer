@@ -9,12 +9,26 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "react": "^18",
-    "react-dom": "^18",
-    "next": "14.2.6"
+    "@pinecone-database/pinecone": "^3.0.2",
+    "adm-zip": "^0.5.16",
+    "axios": "^1.7.7",
+    "express": "^4.19.2",
+    "next": "^14.2.8",
+    "node-fetch": "^3.3.2",
+    "openai": "^4.58.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-markdown": "^9.0.1",
+    "react-scripts": "^5.0.1",
+    "react-syntax-highlighter": "^15.5.0",
+    "tree-sitter": "^0.21.1",
+    "tree-sitter-cli": "^0.23.0",
+    "tree-sitter-javascript": "^0.23.0",
+    "uuid": "^10.0.0",
+    "web-vitals": "^4.2.3"
   },
   "devDependencies": {
     "eslint": "^8",
-    "eslint-config-next": "14.2.6"
+    "eslint-config-next": "^14.2.8"
   }
 }
