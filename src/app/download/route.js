@@ -4,17 +4,19 @@ import fs from 'fs';
 import axios from 'axios';
 import AdmZip from 'adm-zip';
 import { cookies } from 'next/headers';
+import { processFile } from '../database/processFile';
 
 export async function POST(request) {
     const { url } = await request.json();
 
     // Print an error message if the codebase already exists
     const codebasePath = path.join(
-      path.resolve(__dirname, "../../"), 
-      `codebases${cookies().get("seed")}`
+      process.cwd(), 
+      `codebase${cookies().get("seed").value}`
     );
+    console.log(codebasePath);
     if (fs.existsSync(codebasePath)) {
-      return NextResponse.json({ error: "Codebase already cached; please delete it if you want to upload a new one" }, { status: 400 });
+      return NextResponse.json({ error: "Codebase already uploaded; delete it to upload another" }, { status: 400 });
     }
 
     if (!url || url == "") {
@@ -30,13 +32,13 @@ export async function POST(request) {
   
       const zip = new AdmZip(response.data);
       const extractPath = path.join(
-        path.resolve(__dirname, "../../"),  // Navigate to the root directory and add the codebases directory
-        `codebases${cookies().get("seed")}`,
+        process.cwd(),  // Navigate to the root directory and add the codebases directory
+        `codebase${cookies().get("seed").value}`,
         path.basename(url, ".zip"),
       );
       zip.extractAllTo(extractPath, true);
 
-      // Upsert embeddings from the codebase!
+      // Upsert embeddings from the codebase
       const traverseDirectory = (directoryPath) => {
           fs.readdir(directoryPath, { withFileTypes: true }, (err, files) => {
               if (err) {

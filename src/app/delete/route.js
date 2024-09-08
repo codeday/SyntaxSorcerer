@@ -2,17 +2,18 @@ import { NextResponse } from 'next/server';
 import fs from 'fs';
 import fsp from 'fs/promises';
 import path from 'path';
-import pinecone from '../config/pinecone/pineconeInit'
+import { pinecone } from '../config/pinecone/pineconeInit'
 import { cookies } from 'next/headers';
 
 export async function GET(request) {
+
     const codebasePath = path.join(
-        path.resolve(__dirname, "../../"),
-        `codebase${cookies().get("seed")}`
+        process.cwd(),
+        `codebase${cookies().get("seed").value}`
     );
     
     if (!fs.existsSync(codebasePath)) {
-        return NextResponse.json({ error: "No codebase currently cached" }, { status: 400 });
+        return NextResponse.json({ error: "No codebase currently uploaded" }, { status: 400 });
     }
     
     try {
@@ -20,10 +21,10 @@ export async function GET(request) {
     
         // Delete everything from the Pinecone namespace
         await pinecone.deleteVectorsFromNamespace();
-        NextResponse.json({ message: "Codebase deleted" });
+        return NextResponse.json({ message: "Codebase deleted" });
 
     } catch (error) {
         console.error("Error processing codebase directory:", error);
-        NextResponse.json({ error: `Error processing codebase directory: ${error}` }, { status: 500 });
+        return NextResponse.json({ error: `Error processing codebase directory: ${error}` }, { status: 500 });
     }
 }

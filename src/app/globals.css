@@ -1,3 +1,5 @@
+@import '~@sweetalert2/theme-borderless/borderless.css';
+
 @media
 only screen and (-webkit-min-device-pixel-ratio: 1.5),
 only screen and (-o-min-device-pixel-ratio: 3/2),
@@ -27,6 +29,18 @@ body {
   overflow-x: hidden; 
   opacity: 1;
   background-image:  repeating-radial-gradient( circle at 0 0, transparent 0, #C6CEFF 50px ), repeating-linear-gradient( #9d84df55, #b8b2f7 );  
+}
+
+.swal2-title {
+  font-family:'Poppins', sans-serif;
+}
+
+.swal2-html-container {
+  font-family:'Poppins', sans-serif;
+}
+
+.swal2-confirm {
+  font-family:'Poppins', sans-serif !important;
 }
 
 

@@ -39,7 +39,7 @@ export default function Home() {
   }, [hasSeed]);
 
   return (
-    <div>
+    <div className={styles.wrapper}>
       <div className={styles.container}>
         <h1 className={styles.title}>💻 Syntax Sorcerer</h1>
         <CodebaseControls />

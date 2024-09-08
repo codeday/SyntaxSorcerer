@@ -66,10 +66,10 @@ export class PineconeManager {
      * 
      * @async
      * @param {Object} data - The dictionary of functions and classes with embeddings.
-     * @param {string} [namespace=`codebase${cookies().get("seed")}`] - The namespace in the index to upsert to.
+     * @param {string} [namespace=`codebase${cookies().get("seed").value}`] - The namespace in the index to upsert to.
      * @returns {Promise<void>} A promise that resolves once the embeddings are upserted.
      */
-    async upsertEmbeddings(data, namespace = `codebase${cookies().get("seed")}`) {
+    async upsertEmbeddings(data, namespace = `codebase${cookies().get("seed").value}`) {
         // Prepare the upsert request payload
         const upsertPayload = [];
 
@@ -106,11 +106,11 @@ export class PineconeManager {
      * 
      * @async
      * @param {Array<number>} embedding - The embedding vector to query with.
-     * @param {string} [namespace=`codebase${cookies().get("seed")}`] - The namespace to query.
+     * @param {string} [namespace=`codebase${cookies().get("seed").value}`] - The namespace to query.
      * @param {number} [topK=5] - The number of top results to return.
      * @returns {Promise<Object[]>} A promise that resolves to the query results.
      */
-    async similaritySearch(embedding, namespace = `codebase${cookies().get("seed")}`, topK = 3) {
+    async similaritySearch(embedding, namespace = `codebase${cookies().get("seed").value}`, topK = 3) {
         const queryResponse = await this.index.namespace(namespace).query({
             vector: embedding,
             topK: topK,  // Number of top results to return
@@ -137,10 +137,10 @@ export class PineconeManager {
      * Deletes the vectors in a specified namespace.
      * 
      * @async
-     * @param {string} [namespace=`codebase${cookies().get("seed")}`] - The namespace in the index to search within.
+     * @param {string} [namespace=`codebase${cookies().get("seed").value}`] - The namespace in the index to search within.
      * @returns {Promise<void>} A promise that resolves once all vectors in a namespace are deleted.
      */
-     async deleteVectorsFromNamespace(namespace=`codebase${cookies().get("seed")}`) {
+     async deleteVectorsFromNamespace(namespace=`codebase${cookies().get("seed").value}`) {
         await this.index.namespace(namespace).deleteAll();
     }
 }

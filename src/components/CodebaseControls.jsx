@@ -1,6 +1,7 @@
 "use client";
 import { useRef } from "react";
 import styles from "../app/styles/Chatbot.module.css";
+import Swal from "sweetalert2";
 
 export default function CodebaseControls() {
   const codebaseURLInput = useRef(null);
@@ -17,9 +18,17 @@ export default function CodebaseControls() {
 
     const result = await response.json();
     if (result.error) {
-      alert(result.error);
+      Swal.fire({title: 'Error',
+      text: result.error,
+      icon: 'error',
+      heightAuto: false,
+      confirmButtonColor: "#8d77d4"});
     } else {
-      alert("Codebase downloaded and cached");
+      Swal.fire({title: 'Success',
+      text: result.message,
+      icon: 'success',
+      heightAuto: false,
+      confirmButtonColor: '#8d77d4'});
     }
   }
 
@@ -34,9 +43,17 @@ export default function CodebaseControls() {
   
     const result = await response.json();
     if (result.error) {
-      alert(result.error);
+      Swal.fire({title: 'Error',
+      text: result.error,
+      icon: 'error',
+      heightAuto: false,
+      confirmButtonColor: "#8d77d4"});
     } else {
-      alert("Codebase successfully deleted");
+      Swal.fire({title: 'Success',
+      text: result.message,
+      icon: 'success',
+      heightAuto: false,
+      confirmButtonColor: '#8d77d4'});
     }
   }  
   

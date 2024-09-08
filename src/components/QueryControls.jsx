@@ -103,7 +103,7 @@ export default function QueryControls() {
         sendButton.disabled = true;
 
         // UNCOMMENT the following line when the Pinecone functionality has been implemented
-        // await fetchPineconeResponse(userInput);
+        await fetchPineconeResponse(userInput);
     
         sendButton.disabled = false;
         queryButton.disabled = false;
@@ -111,7 +111,7 @@ export default function QueryControls() {
 
     // Fetch a response from the Pinecone API, generate an embedding from the user input
     async function fetchPineconeResponse(userInput) {
-        const response = await fetch(`${process.env.URL}/pinecone`, {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_URL}/database`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",

@@ -1,21 +1,20 @@
 /* Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-/* Title styles */
-.title {
-    font-family: "Poppins", sans-serif;
-    text-align: center;
-}
 /* Container styles */
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100%;
+}
+
 .container {
+    position: relative;
     padding: 50px;
-    padding-bottom: 70px;
-    margin-top: 400px;
-    margin-bottom: 60px;
     border-radius: 30px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    width: 65vw;
-    height: auto;
+    width: 72vw;
     background: #777ed4; /* Fallback for old browsers */
     background: -webkit-linear-gradient(
         to bottom,
@@ -28,14 +27,54 @@
         #8d77d4
     ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     opacity: 0.95;
-    overflow-y: auto;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 845px) {
     .container {
-        width: 75vw;
-        padding: 30px;
-        margin-top: 250px;
+        width: 80vw;
+        padding: 30px;  
+    }
+}
+
+@media only screen and (max-height: 500px) {
+    .wrapper {
+        padding-top: 390px; 
+        padding-bottom: 50px;
+    }
+}
+
+@media only screen and (min-height: 501px) and (max-height: 620px) {
+    .wrapper {
+        padding-top: 360px; 
+        padding-bottom: 50px;
+    }
+}
+
+@media only screen and (min-height: 621px) and (max-height: 700px) {
+    .wrapper {
+        padding-top: 330px; 
+        padding-bottom: 50px;
+    }
+}
+
+@media only screen and (min-height: 701px) and (max-height: 800px) {
+    .wrapper {
+        padding-top: 300px; 
+        padding-bottom: 50px;
+    }
+}
+
+@media only screen and (min-height: 801px) and (max-height: 860px) {
+    .wrapper {
+        padding-top: 270px; 
+        padding-bottom: 50px;
+    }
+}
+
+@media only screen and (min-height: 861px) and (max-height: 1000px) {
+    .wrapper {
+        padding-top: 200px; 
+        padding-bottom: 50px;
     }
 }
 
@@ -56,9 +95,11 @@
     font-size: 400%;
     text-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     line-height: 110%;
+    font-family: "Poppins", sans-serif;
+    text-align: center;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 750px) {
     .title {
         font-size: 300%;
     }
