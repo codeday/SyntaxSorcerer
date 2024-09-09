@@ -26,7 +26,8 @@ body {
   margin: 0;
   overflow-x: hidden; 
   opacity: 1;
-  background-image:  repeating-radial-gradient( circle at 0 0, transparent 0, #C6CEFF 50px ), repeating-linear-gradient( #9d84df55, #b8b2f7 );  
+  background-image:  repeating-radial-gradient( circle at 0 0, transparent 0, #C6CEFF 50px ), repeating-linear-gradient( #9d84df55, #b8b2f7 ); 
+  background-size: cover; 
 }
 
 .swal2-title, .swal2-html-container, .swal2-html-container {
