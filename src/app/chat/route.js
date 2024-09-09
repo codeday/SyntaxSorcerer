@@ -5,7 +5,6 @@ import { openai } from '../config/openAIConfig';
 export async function POST(request) {
     const res = await request.json();
     const userInput = res.prompt;
-    console.log(userInput);
 
     if (!userInput) {
       return NextResponse.json({ error: "Prompt is required" }, { status: 400 });
@@ -17,7 +16,7 @@ export async function POST(request) {
   
     try {
       const response = await openai.chat.completions.create({
-        model: "gpt-3.5-turbo", // Updated model name
+        model: "gpt-3.5-turbo", 
         messages: [{ role: "user", content: userInput }],
         max_tokens: 1000,
       });

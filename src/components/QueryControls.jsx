@@ -127,7 +127,7 @@ export default function QueryControls() {
     }
 
     return (
-        <div className={styles.submitFlex}>
+        <div className={styles.flex}>
             <button
             id="send-button"
             className={styles.submitButton}

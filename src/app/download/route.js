@@ -14,7 +14,6 @@ export async function POST(request) {
       process.cwd(), 
       `codebase${cookies().get("seed").value}`
     );
-    console.log(codebasePath);
     if (fs.existsSync(codebasePath)) {
       return NextResponse.json({ error: "Codebase already uploaded; delete it to upload another" }, { status: 400 });
     }

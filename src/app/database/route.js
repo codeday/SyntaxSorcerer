@@ -15,8 +15,8 @@ export async function POST(request) {
         process.cwd(), 
        `codebase${cookies().get('seed').value}`
     );
-    console.log(codebasePath);
-      if (!fs.existsSync(codebasePath)) {
+   
+    if (!fs.existsSync(codebasePath)) {
         return NextResponse.json({ text: "You haven't uploaded a codebase yet! Please try again." });
     }
 
@@ -58,7 +58,7 @@ export async function POST(request) {
                 filesToSend.push(code);
             }
         }
-        console.log(filesToSend);
+
         return NextResponse.json({ text: answer, files: filesToSend }); 
     }
     catch (error) {

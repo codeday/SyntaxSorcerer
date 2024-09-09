@@ -116,14 +116,13 @@
 
 /* Message item styles */
 .message {
-    display: flex;
     align-items: flex-start;
     margin-bottom: 10px;   
 }
 
 .message .sender {
     font-weight: bold;
-    margin-right: 10px;
+    margin-bottom: -15px;
 }
 
 .message .content {
@@ -139,6 +138,7 @@
     border-radius: 10px;
     margin-bottom: 10px;
     border-style: none;
+    font-size: medium;
     overflow-y: auto;
     background: #473b8b;
     color: white;
@@ -201,11 +201,6 @@
     
 }
 
-.submitFlex {
-    display: flex;
-    justify-content: center; 
-}
-
 @media only screen and (max-width: 406px) {
     .query-button, .codebase-button {
         margin-bottom: 10px;
@@ -215,6 +210,7 @@
 /* Input styles */
 .input {
     font-family: "Poppins", sans-serif;
+    font-size: medium;
     border-style: none;
     width: calc(100% - 22px);
     padding: 10px;

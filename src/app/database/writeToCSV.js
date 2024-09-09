@@ -42,8 +42,6 @@ export function writeToCsv(data, outputPath) {
         embeddings: JSON.stringify(item.embedding)
       })) */
     ];
-
-    // console.log(records)
   
     csvWriter.writeRecords(records)
       .then(() => console.log('CSV file was written successfully'));

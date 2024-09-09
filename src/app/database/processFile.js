@@ -9,7 +9,6 @@ export async function processFile(filePath) {
 
     // Extract code blocks
     const codeBlocks = extractCodeElements(filePath);
-    // console.log(codeBlocks);
 
     // Generate embeddings
     const embeddedCodeBlocks = await processAndUpdateDictionary(codeBlocks);

@@ -17,6 +17,6 @@ export async function GET(request) {
         path: '/',
         secure: true
     });
-    console.log(`New seed generated: ${seed}`);
+
     return NextResponse.json({ message: "Seed set" });
 }

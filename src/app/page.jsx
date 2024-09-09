@@ -30,9 +30,6 @@ export default function Home() {
       // Fetch the seed if it has not been set
       fetch(`${process.env.NEXT_PUBLIC_URL}/config/seed`)
         .then(response => response.json())
-        .then(data => {
-          console.log('Seed fetched:', data);
-        })
         .catch(console.error);
     }
   }, [hasSeed]);
