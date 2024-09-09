@@ -1,11 +1,10 @@
 "use client";
-
-import Image from "next/image";
 import styles from "../app/styles/Chatbot.module.css";
 import CodebaseControls from "@/components/CodebaseControls";
 import QueryControls from "@/components/QueryControls";
 import Chatbot from "@/components/Chatbot";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 export default function Home() {
   const [hasSeed, setHasSeed] = useState(false);
@@ -41,7 +40,10 @@ export default function Home() {
   return (
     <div className={styles.wrapper}>
       <div className={styles.container}>
-        <h1 className={styles.title}>💻 Syntax Sorcerer</h1>
+        <div className={styles.flex}>
+        <Image src='./icon.svg' alt='The app logo, a glowing hexagon.' width={80} height={80}></Image>
+        <h1 className={styles.title}>Syntax Sorcerer</h1>
+        </div>
         <CodebaseControls />
         <Chatbot />
         <QueryControls />

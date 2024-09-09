@@ -1,8 +1,8 @@
 "use client";
 import styles from "../app/styles/Chatbot.module.css";
 import { useState } from "react";
-import ReactDOM from "react-dom";
 import MarkdownRenderer from "./MarkdownRenderer";
+import { createRoot } from "react-dom/client";
 
 export default function QueryControls() {
     const [messageCounter, setMessageCounter] = useState(0);
@@ -10,14 +10,14 @@ export default function QueryControls() {
     function appendMessage(sender, message) {
         const messagesDiv = document.getElementById("messages");
         const messageElement = document.createElement("div");
-        messageElement.classList.add("message");
+        messageElement.className = styles["message"];
     
         const senderElement = document.createElement("div");
-        senderElement.classList.add("sender");
         senderElement.textContent = sender.toUpperCase();
+        senderElement.className = styles["sender"];
     
         const contentElement = document.createElement("div");
-        contentElement.classList.add("content");
+        contentElement.className = styles["content"];
     
         messageElement.appendChild(senderElement);
         messageElement.appendChild(contentElement);
@@ -29,9 +29,8 @@ export default function QueryControls() {
             contentElement.innerHTML = `<div id="markdown-content${currentCounter}"></div>`;
             const markdownElement = document.getElementById(`markdown-content${currentCounter}`);
             
-            ReactDOM.render(
-                <MarkdownRenderer content={message} />, markdownElement
-            );
+            const root = createRoot(markdownElement);
+            root.render(<MarkdownRenderer content={message} />);
 
             return currentCounter + 1;
         });
@@ -102,7 +101,6 @@ export default function QueryControls() {
         queryButton.disabled = true;
         sendButton.disabled = true;
 
-        // UNCOMMENT the following line when the Pinecone functionality has been implemented
         await fetchPineconeResponse(userInput);
     
         sendButton.disabled = false;
