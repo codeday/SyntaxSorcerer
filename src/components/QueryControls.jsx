@@ -12,20 +12,27 @@ export default function QueryControls() {
 
     useEffect(() => {
         const inputField = document.getElementById("user-input");
+
         const handleKeyPress = (event) => {
-            if (event.key === "Enter") {
-                event.preventDefault(); // Prevents a new line (for multi-line inputs)
-                sendMessage();
+            // Check if Enter is pressed without Shift
+            if (event.key === "Enter" && !event.shiftKey) {
+                event.preventDefault(); // Prevent default behavior (new line)
+                sendMessage(); // Send the message
+            }
+            // If Shift + Enter, allow a new line
+            else if (event.key === "Enter" && event.shiftKey) {
+                // Allow the browser to insert a new line
+                // No need to prevent default in this case
             }
         };
 
         inputField.addEventListener("keydown", handleKeyPress);
 
-        // Cleanup event listener when component unmounts
+        // Cleanup the event listener on component unmount
         return () => {
             inputField.removeEventListener("keydown", handleKeyPress);
         };
-    }, []); // Run this effect once when the component mounts
+    }, []);
 
     function appendMessage(sender, message) {
         const messagesDiv = document.getElementById("messages");
