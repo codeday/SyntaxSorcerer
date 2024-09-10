@@ -12,7 +12,7 @@ You can start editing the page by modifying `app/page.js`. The page auto-updates
 
 ## How to Use
 Each user may upload one codebase to the app's local storage at a time by pasting a link in the topmost input box. This link must be a link to download a .zip file and must be a [valid URL](https://dev.w3.org/html5/spec-LC/urls.html). An existing codebase may be removed at any time during the user session in order to upload another one. Currently, only JavaScript files are supported.\
-To send a regular message to the ChatGPT interface, press 'Enter.' Pressing 'Query codebase' will process your prompt, use cosine similarity to find the three most relevant code segments in your codebase, and display an answer to your prompt that considers the files containing these segments.\
+To send a regular message to the ChatGPT interface, press 'Enter.' Pressing 'Query codebase' will process your prompt, use cosine similarity to find the three most relevant code segments in your codebase, and display an answer to your prompt that considers the files containing these segments.
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
