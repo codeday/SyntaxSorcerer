@@ -14,24 +14,45 @@
     padding: 50px;
     border-radius: 30px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    width: 72vw;
+    width: 68vw;
     background: #777ed4; /* Fallback for old browsers */
     background: -webkit-linear-gradient(
         to bottom,
         #6b90e0,
-        #8d77d4
+        #9977d4
     ); /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(
         to bottom,
         #6b90e0,
-        #8d77d4
+        #9977d4
     ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     opacity: 0.95;
 }
 
-@media only screen and (max-width: 845px) {
+@media only screen and (max-width: 500px) {
+    .wrapper {
+        padding-top: 500px; 
+        padding-bottom: 100px;
+    }
+}
+
+@media only screen and (max-width: 600px) {
     .container {
-        width: 80vw;
+        width: 72vw;
+        padding: 20px;  
+    }
+}
+
+@media only screen and (max-height: 650px) and (min-width: 900px) {
+    .container {
+        width: 72vw;
+        padding: 20px;  
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    .container {
+        width: 75vw;
         padding: 30px;  
     }
 }
@@ -99,7 +120,7 @@
     text-align: center;
 }
 
-@media only screen and (max-width: 750px) {
+@media only screen and (max-width: 900px) {
     .title {
         font-size: 300%;
     }
@@ -159,6 +180,13 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     margin-left: 10px;
     margin-bottom: 20px;
+}
+
+
+@media only screen and (max-width: 600px) {
+    .submitButton {
+        font-size: medium;
+    }
 }
 
 .codebaseButton {
@@ -283,4 +311,3 @@
 .title {
     animation: lights 2s 750ms linear infinite;
 }
-

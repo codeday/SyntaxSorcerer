@@ -11,7 +11,7 @@ export async function POST(request) {
 
     // Print an error message if the codebase already exists
     const codebasePath = path.join(
-      process.cwd(), 
+      `${process.env.NEXT_PUBLIC_CODEBASE_DIR}`, 
       `codebase${cookies().get("seed").value}`
     );
     if (fs.existsSync(codebasePath)) {
@@ -31,7 +31,7 @@ export async function POST(request) {
   
       const zip = new AdmZip(response.data);
       const extractPath = path.join(
-        process.cwd(),  // Navigate to the root directory and add the codebases directory
+        `${process.env.NEXT_PUBLIC_CODEBASE_DIR}`,  // Navigate to the root directory and add the codebases directory
         `codebase${cookies().get("seed").value}`,
         path.basename(url, ".zip"),
       );
@@ -66,7 +66,7 @@ export async function POST(request) {
         path: extractPath,
       });
     } catch (error) {
-      console.error("Error downloading codebase:", error);
-      return NextResponse.json({ error: "Failed to download codebase" }, { status: 500 });
+      console.error("Failed to download codebase:", error);
+      return NextResponse.json({ error: `Failed to download codebase` }); 
     }
 }
