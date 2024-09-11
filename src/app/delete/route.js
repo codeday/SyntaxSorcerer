@@ -8,7 +8,7 @@ import { cookies } from 'next/headers';
 export async function GET(request) {
 
     const codebasePath = path.join(
-        process.cwd(),
+       `${process.env.NEXT_PUBLIC_CODEBASE_DIR}`,
         `codebase${cookies().get("seed").value}`
     );
     
@@ -24,7 +24,7 @@ export async function GET(request) {
         return NextResponse.json({ message: "Codebase deleted" });
 
     } catch (error) {
-        console.error("Error processing codebase directory:", error);
-        return NextResponse.json({ error: `Error processing codebase directory: ${error}` }, { status: 500 });
+        console.error("Failed to delete codebase:", error);
+        return NextResponse.json({ error: `Failed to delete codebase` }, { status: 500 });
     }
 }

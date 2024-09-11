@@ -5,10 +5,8 @@ import MarkdownRenderer from "./MarkdownRenderer";
 import { createRoot } from "react-dom/client";
 import { useEffect } from "react";
 
-
 export default function QueryControls() {
     const [messageCounter, setMessageCounter] = useState(0);
-    // Display a message on the frontend
 
     useEffect(() => {
         const inputField = document.getElementById("user-input");
@@ -34,6 +32,7 @@ export default function QueryControls() {
         };
     }, []);
 
+    // Display a message on the frontend
     function appendMessage(sender, message) {
         const messagesDiv = document.getElementById("messages");
         const messageElement = document.createElement("div");
@@ -86,18 +85,18 @@ export default function QueryControls() {
     // Send a message to the ChatGPT API
     async function sendMessage() {
         const userInput = document.getElementById("user-input").value;
-        if (userInput.trim() === "") return;
+        if(userInput.trim() === "") return;
 
         appendMessage("You", userInput);
         document.getElementById("user-input").value = "";
-
+      
         const sendButton = document.getElementById("send-button");
         const queryButton = document.getElementById("query-button");
         queryButton.disabled = true;
         sendButton.disabled = true;
-
+    
         await fetchChatGPTResponse(userInput);
-
+      
         sendButton.disabled = false;
         queryButton.disabled = false;
     }
@@ -167,7 +166,7 @@ export default function QueryControls() {
             className={styles.submitButton}
             onClick={sendCodebaseQuery}
             >
-            Query codebase
+            Search codebase
             </button>
         </div>
     );
