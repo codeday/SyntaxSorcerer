@@ -11,23 +11,18 @@ export default function Home() {
 
   useEffect(() => {
     const checkSeed = () => {
-      // Check if the seed cookie exists on the client side
       const cookies = document.cookie.split('; ').reduce((acc, cookie) => {
         const [name, value] = cookie.split('=');
         acc[name] = value;
         return acc;
       }, {});
-
       setHasSeed(!!cookies['seed']);
     };
     checkSeed();
   }, []);
 
-  console.log(hasSeed);
-
   useEffect(() => {
     if (!hasSeed) {
-      // Fetch the seed if it has not been set
       fetch(`${process.env.NEXT_PUBLIC_URL}/config/seed`)
         .then(response => response.json())
         .catch(console.error);
@@ -36,14 +31,29 @@ export default function Home() {
 
   return (
     <div className={styles.wrapper}>
+      {/* Main content container */}
       <div className={styles.container}>
         <div className={styles.flex}>
-        <Image src='./icon.svg' alt='The app logo, a glowing hexagon.' width={80} height={80}></Image>
-        <h1 className={styles.title}>Syntax Sorcerer</h1>
+          <Image src="./icon.svg" alt="The app logo, a glowing hexagon." width={80} height={80} />
+          <h1 className={styles.title}>Syntax Sorcerer</h1>
         </div>
-        <CodebaseControls />
-        <Chatbot />
-        <QueryControls />
+        
+        {/* Main content: CodebaseControls, Chatbot, QueryControls */}
+        <div className={styles.mainContent}>
+          <CodebaseControls />
+          <Chatbot />
+          <QueryControls />
+        </div>
+        
+        {/* Right-side navigation bar */}
+        <div className={styles.navbar}>
+          <h3>Navigation</h3>
+          <ul>
+            <li><a href="#section1">Section 1</a></li>
+            <li><a href="#section2">Section 2</a></li>
+            <li><a href="#section3">Section 3</a></li>
+          </ul>
+        </div>
       </div>
     </div>
   );
