@@ -12,13 +12,11 @@ export default function Home() {
 
   useEffect(() => {
     const checkSeed = () => {
-      // Check if the seed cookie exists on the client side
       const cookies = document.cookie.split('; ').reduce((acc, cookie) => {
         const [name, value] = cookie.split('=');
         acc[name] = value;
         return acc;
       }, {});
-
       setHasSeed(!!cookies['seed']);
     };
     checkSeed();
@@ -26,7 +24,6 @@ export default function Home() {
 
   useEffect(() => {
     if (!hasSeed) {
-      // Fetch the seed if it has not been set
       fetch(`${process.env.NEXT_PUBLIC_URL}/config/seed`)
         .then(response => response.json())
         .then(() => setSeedFetched(true))
@@ -48,8 +45,11 @@ export default function Home() {
   return (
     <div className={styles.wrapper}>
       {/* Main content container */}
+      {/* Main content container */}
       <div className={styles.container}>
         <div className={styles.flex}>
+          <Image src="./icon.svg" alt="The app logo, a glowing hexagon." width={80} height={80} />
+          <h1 className={styles.title}>Syntax Sorcerer</h1>
           <Image src="./icon.svg" alt="The app logo, a glowing hexagon." width={80} height={80} />
           <h1 className={styles.title}>Syntax Sorcerer</h1>
         </div>
