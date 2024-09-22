@@ -50,8 +50,6 @@ export default function Home() {
         <div className={styles.flex}>
           <Image src="./icon.svg" alt="The app logo, a glowing hexagon." width={80} height={80} />
           <h1 className={styles.title}>Syntax Sorcerer</h1>
-          <Image src="./icon.svg" alt="The app logo, a glowing hexagon." width={80} height={80} />
-          <h1 className={styles.title}>Syntax Sorcerer</h1>
         </div>
         
         {/* Main content: CodebaseControls, Chatbot, QueryControls */}
